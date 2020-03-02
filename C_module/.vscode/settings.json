@@ -1,0 +1,8 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "cmath": "c",
+        "*.tcc": "c",
+        "user_library.h": "c"
+    }
+}
