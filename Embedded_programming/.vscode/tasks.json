@@ -1,0 +1,26 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile ino file",
+            "type": "shell",
+            "command": "arduino-cli compile --fqbn arduino:avr:uno ${fileDirname}",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Upload ino file",
+            "type": "shell",
+            "command": "arduino-cli upload -p COM8 -v --fqbn arduino:avr:uno ${fileBasenameNoExtension}",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}
+//add task and keybindings to check for com port, board
