@@ -383,4 +383,17 @@ print('The result of set[1, 2, 1, 3, 2, 5] is', set([1, 2, 1, 3, 2, 5]))
 lists = ["python", "java", "Python", "Java"]
 for i in range(len(lists)):
     lists[i]= lists[i].lower()
-print('The result of {"python", "java", "Python", "Java"} is', set(lists) )
+print('The result of {"python", "java", "Python", "Java"} is', set(lists), '\n')
+
+print('''Problem 35: Write a function extsort to sort a list of files based on extension.
+>>> extsort(['a.c', 'a.py', 'b.py', 'bar.txt', 'foo.txt', 'x.c']) 
+['a.c', 'x.c', 'a.py', 'b.py', 'bar.txt', 'foo.txt']''')
+
+def extsort(lists):
+    for i in range(len(lists)):             #split into 2D array
+        lists[i] = lists[i].split('.')
+    lists.sort(key = lambda x : x[1])       #sort based on the 2nd array of each list
+    for i in range(len(lists)):             #join into 1D array
+        lists[i] = '.'.join(lists[i])
+    return lists
+print("The result of extsort(['a.c', 'a.py', 'b.py', 'bar.txt', 'foo.txt', 'x.c']) is", extsort(['a.c', 'a.py', 'b.py', 'bar.txt', 'foo.txt', 'x.c']), '\n')
