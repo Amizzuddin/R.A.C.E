@@ -7,12 +7,12 @@ import sys
 def readfile(filename):
     return open(filename).readlines()
 
-def reverse_lines(lists):
+def reverse_line_seq(lists):
     reverse_list = []
     for i in lists[::-1]:
         reverse_list.append(i)
     return reverse_list
 
 text = readfile(sys.argv[1])
-text = reverse_lines(text)
+text = reverse_line_seq(text)
 print(''.join(text))
