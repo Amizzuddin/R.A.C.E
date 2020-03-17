@@ -15,6 +15,9 @@
 # -w : Match whole word
 # -o : Print only the matched parts of a matching line, with each such part on a separate output line.
 
+# Although os.system() works, it is not recommended as it is considered a bit old and deprecated.
+# A more recommended solution is Python’s subprocess module call(args) function.
+#import subprocess
 import os
 import sys
 
