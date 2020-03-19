@@ -25,10 +25,10 @@ def join_each_line(array):
         array[i] += '\n'
     return array
 
-    
-text = readfile(sys.argv[1])
-print(''.join(text))
-text = splitting(text)
-text = line_reverse(text)
-text = join_each_line(text)
-print(''.join(text))
+if __name__ == "__main__":
+    text = readfile(sys.argv[1])
+    print(''.join(text))
+    text = splitting(text)
+    text = line_reverse(text)
+    text = join_each_line(text)
+    print(''.join(text))

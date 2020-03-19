@@ -14,11 +14,12 @@ import sys
 from reverse import reverse_line_seq
 
 def wrapping(text , length):
+    text = reverse_line_seq(text)
     wrap_text = []
     printlen = int(length)
     for i in range(len(text)) : #for loop to point the filaname array (this example 4 lines)
         lenofline = len(text[i])
-        text[i] = text[i].strip('\n')
+        text[i] = text[i].strip('\n')           #strip every newline character at each line
         for j in range(0, lenofline, printlen) : #for loop to point the members in each line
             x = (lenofline, printlen) [lenofline > j+printlen] #ternary operator
             wrap_text.append(text[i][j:x])
@@ -26,6 +27,5 @@ def wrapping(text , length):
 
 if __name__ == "__main__": #only execute this function if file is run but not imported
     readtext = open(sys.argv[1]).readlines()
-    readtext = reverse_line_seq(readtext)
     readtext = wrapping(readtext , sys.argv[2])
     print('\n'.join(readtext))
