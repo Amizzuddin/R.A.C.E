@@ -11,7 +11,7 @@
 # shore;
 
 import sys
-import reverse
+from reverse import reverse_line_seq
 
 def wrapping(text , length):
     wrap_text = []
@@ -24,8 +24,8 @@ def wrapping(text , length):
             wrap_text.append(text[i][j:x])
     return wrap_text
 
-readtext = open(sys.argv[1]).readlines()
-readtext = reverse.reverse_line_seq(readtext)
-readtext = wrapping(readtext , sys.argv[2])
-print('\n'.join(readtext))
-#print(readtext)
+if __name__ == "__main__": #only execute this function if file is run but not imported
+    readtext = open(sys.argv[1]).readlines()
+    readtext = reverse_line_seq(readtext)
+    readtext = wrapping(readtext , sys.argv[2])
+    print('\n'.join(readtext))
