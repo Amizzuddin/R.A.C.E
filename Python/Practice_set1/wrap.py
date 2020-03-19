@@ -11,19 +11,21 @@
 # shore;
 
 import sys
+import reverse
 
-def wrapping(filename , length):
-    text = open(filename).readlines()
-    #print(len(text))
-    #wrap_list = []
+def wrapping(text , length):
+    wrap_text = []
+    printlen = int(length)
     for i in range(len(text)) : #for loop to point the filaname array (this example 4 lines)
-        print('i loop:', i, 'total lenght on array:', len(text[i]))
-        for j in range(0,len(text[i]), int(length)) : #for loop to point the members in each line
-            print(j, text[i][j:int(length)]) #problem is the 2nd time to print from 30 till end it wont print
-        #wrap_list.append([])
-        #for j in range(len(text[i])) :
-        #    wrap_list.append(text[i][j:j+int(length)])
-        #    j = j+int(length)
-        #    print(j, wrap_list)
+        lenofline = len(text[i])
+        text[i] = text[i].strip('\n')
+        for j in range(0, lenofline, printlen) : #for loop to point the members in each line
+            x = (lenofline, printlen) [lenofline > j+printlen] #ternary operator
+            wrap_text.append(text[i][j:x])
+    return wrap_text
 
-wrapping(sys.argv[1] , sys.argv[2])
+readtext = open(sys.argv[1]).readlines()
+readtext = reverse.reverse_line_seq(readtext)
+readtext = wrapping(readtext , sys.argv[2])
+print('\n'.join(readtext))
+#print(readtext)
