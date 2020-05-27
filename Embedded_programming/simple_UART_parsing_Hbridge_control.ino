@@ -1,5 +1,8 @@
 //This is a function that is able to parse data from UART/serial communication. This function is suitable to send commands to
 //to Arduino to control Hbridge direction and speed.
+//Function will reject if data received is alphanumeric. Only numerical values accepted. commands are separated by comma values.
+//example:
+//Transmit from PC: direction, speed (can add more commands must be separated by comma)
 
 int serial_data_control(){
   int conversion = 0;
