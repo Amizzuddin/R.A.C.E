@@ -1,12 +1,13 @@
 //Class definition for pushbutton
 class pushbutton{
   public:
-  	pushbutton(byte pin){
+	pushbutton(byte pin){
    		pb = pin; 
   	}
   	void initialize(){
-    	pinMode(pb, INPUT);
+    		pinMode(pb, INPUT);
   	}
+	
   	//read pushbutton with debounce capability
   	bool read(){
     	int reading = digitalRead(pb);
@@ -20,8 +21,9 @@ class pushbutton{
   		}
   		lastButtonState = reading;
         return buttonState;
-    }
-  	//return toggle value when button is pushed
+    	}
+	
+  	//return toggle value when button is pressed
   	bool toggle(){
       	bool read_input = read();
       	if(read_input != last_read_input){
@@ -32,32 +34,34 @@ class pushbutton{
       	last_read_input = read_input;
       	return toggle_value;
   	}
+	
   	//return HIGH = there is change of state, LOW = no change
   	bool cosd(){
-    	bool read_input = read();
-      	if(read_input != last_read_input){
-        	last_read_input = read_input;
-          	return HIGH;
-      	}
-      	else{
-          	last_read_input = read_input;
-          	return LOW;
-      	}
+    		bool read_input = read();
+      		if(read_input != last_read_input){
+        		last_read_input = read_input;
+          		return HIGH;
+      		}
+      		else{
+          		last_read_input = read_input;
+          		return LOW;
+      		}
   	}
+	
   	//return the number of times pushbutton is pressed
   	int clicker(int max_count){
-      	bool read_input = read();
-      	if(read_input != last_read_input){
-          	if(read_input == HIGH){
-            	counter = (counter < max_count-1) ? counter + 1: 0;
-          	}
-      	}
-      	last_read_input = read_input; 
-    	return counter;
+      		bool read_input = read();
+      		if(read_input != last_read_input){
+          		if(read_input == HIGH){
+            		counter = (counter < max_count-1) ? counter + 1: 0;
+          		}
+      		}
+      		last_read_input = read_input; 
+    		return counter;
   	}
   private:
   	byte pb;
-    bool buttonState;             // the current reading from the input pin
+    	bool buttonState;             // the current reading from the input pin
 	bool lastButtonState = LOW;   // the previous reading from the input pi
   	bool last_read_input = LOW;
   	bool toggle_value;
